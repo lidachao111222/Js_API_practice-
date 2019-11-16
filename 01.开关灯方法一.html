@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .body{
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+
+    <button>点我</button>
+
+
+    <script>
+        //得到元素
+        let button = document.querySelector('button');
+        let body = document.body;
+
+
+        //注册事件
+        button.addEventListener('click',function(){
+
+            //检查元素是有拥有此css类,有则去除，无则添加
+            body.classList.toggle('body');
+        })
+
+
+        // 要点   元素.classList.toggle() 
+    </script>
+    
+
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button>点我</button>
+
+    <script>
+        //得到元素
+        let button = document.querySelector('button');
+        let body = document.body;
+
+
+
+        //设定一个判断，看是开灯还是关灯
+        let a = true;
+        //注册事件
+        button.onclick = function () {
+            //关灯
+            if (a) {
+                body.style.backgroundColor = 'black'; //关灯
+                a = false;  //改判断，为下次点击做准备。
+            } else {
+                body.style.backgroundColor = ''; //开灯
+                a = true;  //该判断
+            }
+        }
+    </script>
+</body>
+
+</html>
