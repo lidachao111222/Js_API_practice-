@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            border: 1px solid #c0c0c0;
+            width: 500px;
+            margin: 100px auto;
+            text-align: center;
+        }
+
+        th {
+            background-color: #09c;
+            font: bold 16px "微软雅黑";
+            color: #fff;
+            height: 24px;
+        }
+
+        td {
+            border: 1px solid #d0d0d0;
+            color: #404060;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th>
+                <input type="checkbox" name="" id="checkAll" />全选/全不选
+            </th>
+            <th>菜名</th>
+            <th>商家</th>
+            <th>价格</th>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" name="check" class="ck" />
+            </td>
+            <td>红烧肉</td>
+            <td>隆江猪脚饭</td>
+            <td>￥200</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" name="check" class="ck" />
+            </td>
+            <td>香酥排骨</td>
+            <td>隆江猪脚饭</td>
+            <td>￥998</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" name="check" class="ck" />
+            </td>
+            <td>北京烤鸭</td>
+            <td>隆江猪脚饭</td>
+            <td>￥88</td>
+        </tr>
+    </table>
+    <script>
+        /*需求： 1.点全选，则下面三个都被点上
+            2.点下面三个，全选钩点上 */
+
+
+        //得到元素
+        let all = document.querySelector('#checkAll'); //元素
+
+        let eachSet = document.querySelectorAll('.ck'); //元素集合
+
+        //首先先做点击all， 下面三个都被点击
+        all.onclick = function () {
+            //如果为true（被点击）
+            if (this.checked) {
+                eachSet.forEach(function (eachE, eachI) {
+                    eachE.checked = all.checked; //all 为 true 赋值给下面三个
+                })
+            } else {
+                eachSet.forEach(function (eachE, eachI) {
+                    eachE.checked = all.checked; //all 为 false 赋值给下面三个
+                })
+            }
+        }
+
+
+        //下面三个都被点击，则all被点击
+
+        //用反证法！
+
+
+        eachSet.forEach(function (eachE, eachI) {
+
+            eachE.addEventListener('click', function () {
+
+
+                let flag = true;
+                //如果存在一个false，则全部打钩不成立 ,不能用foreach， 因为是方法，不能用break！！！
+                for (let i = 0; i < eachSet.length; i++) {
+                    if (eachSet[i].checked == false) {
+                        flag = false;
+                        break;
+                    }
+                }
+                // 把结果付给all.checked
+                all.checked = flag;
+                console.log(all.checked);
+            })
+        })
+
+
+        // 总结: 灵活运用反证法！   正面不好求用反面求
+    </script>
+</body>
+
+</html>
