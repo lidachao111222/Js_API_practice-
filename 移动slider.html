@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="./touch-api/07-zepto.js"></script>
+    <script src="./touch-api/08-touch.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .center {
+            max-width: 750px;
+            margin: 0 auto;
+
+        }
+
+        .container {
+            overflow: hidden;
+        }
+
+        ul {
+            display: flex;
+            width: 800%;
+            transition: transform 500ms;
+        }
+
+        li {
+            flex: 1;
+            list-style: none;
+        }
+
+        img {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="center">
+        <div class="container">
+            <ul>
+                <li><a href=""><img src="./images/6.jpg" alt=""></a></li>
+                <li><a href=""><img src="./images/1.jpg" alt=""></a></li>
+                <li><a href=""><img src="./images/2.jpg" alt=""></a></li>
+                <li><a href=""><img src="./images/3.jpg" alt=""></a></li>
+                <li><a href=""><img src="./images/4.jpg" alt=""></a></li>
+                <li><a href=""><img src="./images/5.jpg" alt=""></a></li>
+                <li><a href=""><img src="./images/6.jpg" alt=""></a></li>
+                <li><a href=""><img src="./images/1.jpg" alt=""></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        let currentIndex = 1;
+        let container = document.querySelector('.container');
+        let ul = document.querySelector('ul');
+
+
+
+        // 得到元素
+        let toLeft = $('.container');
+
+
+        //注册事件
+        toLeft.on('swipeLeft', function () {
+            //计算移动距离
+            let move = currentIndex * container.clientWidth * -1;
+            ul.style.transform = `translate(${move}px)`;
+            currentIndex++;
+
+        })
+
+        //去除动画
+        ul.style.transitionDuration = '0s';
+        // 初始设置
+        ul.style.transform =`translate(${-container.clientWidth}px)`;
+        //加回动画
+        setTimeout(function(){
+            ul.style.transitionDuration = '';
+        },30)
+
+
+
+        // 得到元素
+        let toRight = $('.container');
+        //注册事件
+        toRight.on('swipeRight', function () {
+            currentIndex--;
+            //计算移动距离
+            let move = currentIndex * container.clientWidth * -1;
+            ul.style.transform = `translate(${move}px)`;
+        })
+    </script>
+</body>
+
+</html>
