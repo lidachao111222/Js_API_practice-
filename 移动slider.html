@@ -83,11 +83,11 @@
         //去除动画
         ul.style.transitionDuration = '0s';
         // 初始设置
-        ul.style.transform =`translate(${-container.clientWidth}px)`;
+        ul.style.transform = `translate(${-container.clientWidth}px)`;
         //加回动画
-        setTimeout(function(){
+        setTimeout(function () {
             ul.style.transitionDuration = '';
-        },30)
+        }, 30)
 
 
 
@@ -99,6 +99,11 @@
             //计算移动距离
             let move = currentIndex * container.clientWidth * -1;
             ul.style.transform = `translate(${move}px)`;
+        })
+
+        //添加动画结束事件
+        ul.addEventListener('transitionend', function () {
+            if()
         })
     </script>
 </body>
