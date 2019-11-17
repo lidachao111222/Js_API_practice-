@@ -60,6 +60,7 @@
         </div>
     </div>
 
+
     <script>
         let currentIndex = 1;
         let container = document.querySelector('.container');
@@ -73,10 +74,13 @@
 
         //注册事件
         toLeft.on('swipeLeft', function () {
+            currentIndex++;
             //计算移动距离
             let move = currentIndex * container.clientWidth * -1;
             ul.style.transform = `translate(${move}px)`;
-            currentIndex++;
+            console.log(currentIndex);
+
+            console.log(currentIndex);
 
         })
 
@@ -87,7 +91,9 @@
         //加回动画
         setTimeout(function () {
             ul.style.transitionDuration = '';
-        }, 30)
+        }, 5)
+
+        console.log(currentIndex);
 
 
 
@@ -101,9 +107,38 @@
             ul.style.transform = `translate(${move}px)`;
         })
 
-        //添加动画结束事件
+        //注册元素
         ul.addEventListener('transitionend', function () {
-            if()
+
+            if (currentIndex === ul.children.length-1) {
+                currentIndex = 1;
+
+                ul.style.transitionDuration = '0s';
+
+                ul.style.transform = `translate(${-container.clientWidth}px)`;
+
+
+                setTimeout(function () {
+                    ul.style.transitionDuration = '';
+                }, 5)
+
+            }
+
+
+            if (currentIndex === 0) {
+
+                currentIndex = ul.children.length - 2;
+
+                ul.style.transitionDuration = '0s';
+
+                ul.style.transform = `translate(${currentIndex * container.clientWidth * -1}px)`;
+
+
+                setTimeout(function () {
+                    ul.style.transitionDuration = '';
+                }, 5)
+
+            }
         })
     </script>
 </body>
