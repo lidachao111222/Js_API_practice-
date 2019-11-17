@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+
+<body>
+
+    <img src="./images/tianshi.gif" alt="">
+
+    <script>
+        //得到元素
+        let img = document.querySelector('img');
+
+        // 注册事件 ，一定要确定好是给哪个元素添加事件
+        // window.addEventListener('mousemove', function (e) {
+        //     img.style.position='absolute';
+        //     img.style.top=`${e.pageY}px`;
+        //     img.style.left=`${e.pageX}px`
+        // })
+
+            
+            // 使用es5  多行用法！  `${}` 代替+ +； 
+        window.onmousemove = function (e) {
+            img.style.position = 'absolute';
+            img.style.top = `${e.pageY}px`;
+            img.style.left = `${e.pageX}px`
+        }
+    </script>
+
+</body>
+
+</html>

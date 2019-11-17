@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 随便写写 -->
+    <input type="text" name="" id="chao">
+    <div></div>
+
+
+    <script>
+        //得到元素
+        let input = document.querySelector('input');
+        let div = document.querySelector('div');
+
+
+        // 注册事件
+        // 聚焦
+        input.onfocus = function () {
+            div.style.display = 'block';
+        }
+
+        // 注册事件
+        // 不聚焦（去焦） = =
+        input.onblur = function () {
+            div.style.display = '';
+        }
+    </script>
+</body>
+
+</html>
