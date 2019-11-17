@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        ul {
+            padding: 0;
+            width: 600px;
+            margin: 100px auto;
+            list-style: none;
+        }
+
+        li {
+            height: 30px;
+            line-height: 30px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="father">
+        <li>我是第1个li</li>
+        <li>我是第2个li</li>
+        <li>我是第3个li</li>
+        <li>我是第4个li</li>
+        <li>我是第5个li</li>
+        <li>我是第6个li</li>
+    </ul>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+    </ul>
+    <script>
+        //得到元素数组
+        let liSet = document.querySelectorAll('#father>li');
+
+        //添加属性
+        for (let i = 0; i < liSet.length; i++) {
+            if (i % 2 == 0) {
+                //取基数，因为从i 从 0开始。。。 所以感觉相反了
+                liSet[i].style.backgroundColor = 'green';
+            } else {
+                //得到偶数，
+                liSet[i].style.backgroundColor = 'red';
+            }
+        }
+
+        //注册事件,鼠标移入
+        liSet.forEach(function (liEach) {
+            liEach.addEventListener('mouseover', function () {
+                this.style.backgroundColor = 'yellow';
+            })
+        })
+
+        //注册事件，鼠标移出
+        liSet.forEach(function (liEach) {
+            liEach.addEventListener('mouseout', function () {
+                for (let i = 0; i < liSet.length; i++) {
+                    if (i % 2 == 0) {
+                        //取基数，因为从i 从 0开始。。。 所以感觉相反了
+                        liSet[i].style.backgroundColor = 'green';
+                    } else {
+                        //得到偶数，
+                        liSet[i].style.backgroundColor = 'red';
+                    }
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>
+
+</html>
