@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .d1 {
+            position: fixed;
+            bottom: 0px;
+            right: 0px;
+            width: 300px;
+            background-color: red;
+            transition: all 3s;
+        }
+
+        .d2 {
+
+            height: 200px;
+            background-color: blue;
+        }
+
+        .d3 {
+            width: 300px;
+            height: 100px;
+            background-color: pink;
+            transition: height 3s;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="d1">
+        <button>点我关闭</button>
+        <div class="d2"></div>
+        <div class="d3"></div>
+    </div>
+
+    <script>
+        //得到元素
+        let button = document.querySelector('button');
+        let d1 = document.querySelector('.d1');
+        let d3 = document.querySelector('.d3');
+
+        // 方法一
+        // button.onclick = function () {
+        //     d3.style.height = `0px`;
+
+        //     setTimeout(function(){
+        //         d1.style.width = `0px`;
+        //     },3000)
+        // }
+
+        //设置定时器很麻烦
+
+
+        // 方法2
+        //可以用transition 过渡动画结束之后触发事件（transitionend）  但是要用addEventListener添加
+        button.addEventListener('click', function () {
+            d3.style.height = `0px`;
+        })
+
+        d3.addEventListener('transitionend', function () {
+            d1.style.width = `0px`;
+        })
+    </script>
+
+</body>
+
+</html>
