@@ -92,3 +92,4 @@ setTimeout & setInterval 区别
     8.onmouseout	鼠标从某元素移开。
     9.onmouseover	鼠标移到某元素之上。
     10.onmouseup	鼠标按键被松开。
+    11.元素过渡动画结束之后触发事件（transitionend） 但是要用addEventListener添加
