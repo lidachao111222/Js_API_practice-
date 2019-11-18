@@ -59,9 +59,15 @@ offset系列    (offset的偏移是相对父级来说的，那个父级有定位
     2.如何删除localstorage的信息? 利用id  如果 其与点击的元素的自定义id相等，运用数组的索引（forEach方法得到索引）去删除 .splice（索引，删几个元素）。
     3.事件委托。
     4.设定id。循环，把arr中的元素id最大值赋给id，id再++
-    
+    5. 得到真正触发事件的是哪个元素 【事件委托】（通过冒泡得知）e.target / e.target.nodeName
     
     还需多练！
 =======================================    
+ 
+(抽奖)事件解绑
     
+    1.元素.on事件类型 = function(){}  直接在里面写元素.onxxx = null； 即可，超简单。
+    2.元素.addEventListener('事件类型', function 方法名(){ }); 在里面写元素.addEventListener('事件类型'，方法名） 即可。 最好就偷懒，用1 
 
+
+  
