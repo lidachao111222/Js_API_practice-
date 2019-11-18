@@ -118,19 +118,61 @@
 
 
 
+    //创建一个数组，准备存数据
+
+
+    let arr;
+    //把localstorage的json格式信息提取出来
+    let Jarr = localStorage.getItem('weibo');
+    //把json格式文件编译成正常array文件
+    let ar = JSON.parse(Jarr);
+
+    //判断ar是否有值，有责赋值回去arr中，没有则arr为[]
+    if (ar) {
+        arr = ar;
+    } else {
+        arr = [];
+    }
+
+    arr.forEach(function (each) {
+        let newLi = document.createElement('li');
+
+        //给li元素加入信息
+        newLi.innerHTML = `<p class="content">${each.msg}</p>
+        <span class="del" data-id=${each.id}>删除</span>  
+            <span class="time">${each.now}</span>  
+           `; //为啥要换位置？
+
+        //把创建的元素放入到ul中
+        ul.insertBefore(newLi, ul.children[0]);
+    })
+
+
+
     //注册事件
 
     //添加信息
     button.addEventListener('click', function () {
+
+        let id = 0;
+        arr.forEach(function (each) {
+            if (id < each.id) {
+                id = each.id;
+            }
+        })
+        id++;
+
         //得到的信息
         let msg = message.value;
+        //得到的日期
+        let now = getNow();
 
         // 创建li元素
         let newLi = document.createElement('li');
         //给li元素加入信息
         newLi.innerHTML = `<p class="content">${msg}</p>
-        <span class="del">删除</span>  
-            <span class="time">${getNow()}</span>  
+        <span class="del" data-id=${id}>删除</span>  
+            <span class="time">${now}</span>  
            `; //为啥要换位置？
 
         //把创建的元素放入到ul中
@@ -138,6 +180,22 @@
 
         //还原
         message.value = '';
+
+        //把每次写入的信息都存入一个对象中
+        let obj = {
+            id: id,
+            msg: msg,
+            now: now
+        }
+
+        // 存入数据中
+        arr.push(obj);
+
+        //改成Json格式
+        let Jarr = JSON.stringify(arr);
+        //存入localstorage中
+        localStorage.setItem('weibo', Jarr);
+
     })
 
 
@@ -146,7 +204,25 @@
     //del父级注册事件
     ul.addEventListener('click', function (e) {
         if (e.target.classList.contains('del')) {
+
             ul.removeChild(e.target.parentNode);
+
+
+            arr.forEach(function (each, i) {
+
+                if (each.id == e.target.dataset.id) { //得到自定义函数
+
+                    arr.splice(i, 1); //根据索引删除
+
+                }
+
+            })
+
+            //改成Json格式
+            let Jarr = JSON.stringify(arr);
+            //存入localstorage中
+            localStorage.setItem('weibo', Jarr);
+
         }
     })
 </script>
