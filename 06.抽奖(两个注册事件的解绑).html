@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .main {
+            width: 660px;
+            height: 660px;
+            background-image: url('./images/panze.png');
+            margin: 100px auto;
+            position: relative;
+        }
+
+        .zhizhen {
+            width: 338px;
+            height: 338px;
+            background-image: url('./images/zhizhen.png');
+            background-repeat: no-repeat;
+            background-position: center top;
+            position: absolute;
+            top: 129px;
+            left: 152px;
+            transition: transform 500ms linear;
+            /* transform: rotate(7deg); */
+        }
+
+        .begin {
+            width: 138px;
+            height: 138px;
+            position: absolute;
+            top: 227px;
+            left: 252px;
+            border-radius: 50%;
+            /* background-color: rgba(255,0,0,.5); */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="zhizhen"></div>
+        <div class="begin"></div>
+    </div>
+</body>
+
+</html>
+<script>
+    /* 分析:
+    1.点击开始按钮
+    2. 指针旋转
+    3，再次点击没反应// 解绑
+*/
+
+
+    //得到元素
+
+    let zhizhen = document.querySelector('.zhizhen');
+
+
+    let begin = document.querySelector('.begin');
+    //随机数
+    function a() {
+        let random = Math.floor(Math.random() * 360);
+        return random;
+    }
+
+    // begin.onclick = function () {
+    //     //设置旋转样式
+    //     zhizhen.style.transform = `rotate(${a()}deg)`;
+
+    //     //事件解绑
+    //     begin.onclick = null;
+    // }
+
+
+
+    function b() {
+        zhizhen.style.transform = `rotate(${a()}deg)`;
+        begin.removeEventListener('click', b);
+    }
+
+    begin.addEventListener('click', b);
+
+
+
+</script>
