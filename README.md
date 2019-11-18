@@ -21,8 +21,12 @@ Nov.17
 Nov.18
 
 元素移动主要由三个方法。 都是通过改变样式（css的style）去改变：   
+    
     1.当元素设立了position后，通过top   left去改变
+    
+    
     2.通过元素的marginTop ， matginLeft 去改变  （简单粗暴  我喜欢 =。 = ）
+    
     3.通过元素的 transform= translate()  去改变  （多用于移动端）
     
     注意！！！！ 加px  最香的方式是模板字符串   ` ${}  ` 
