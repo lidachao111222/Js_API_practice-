@@ -43,8 +43,8 @@
             background: #ffffff;
             box-shadow: 0px 0px 20px #ddd;
             z-index: 9999;
-            /* margin-left: -250px;
-            margin-top: 140px; */
+            margin-left: -250px;
+            margin-top: 140px;
             /*display: none;*/
         }
 
@@ -195,11 +195,14 @@
 
     }
 
+    // margin - left: -250 px;
+    // margin - top: 140 px;
+
     //注册事件  移动整个登录框  (改变style属性的移动   （注意：有三种改变方法，稍后做整理）)
     title.addEventListener('mousemove', function (e) {
         if (click) {
-            div.style.top = `${e.pageY -toTop}px`;
-            div.style.left = `${e.pageX -toLeft}px `;
+            div.style.top = `${e.pageY -toTop -140}px`;
+            div.style.left = `${e.pageX -toLeft +250}px `;
         }
     })
 
