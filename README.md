@@ -69,5 +69,11 @@ offset系列    (offset的偏移是相对父级来说的，那个父级有定位
     1.元素.on事件类型 = function(){}  直接在里面写元素.onxxx = null； 即可，超简单。
     2.元素.addEventListener('事件类型', function 方法名(){ }); 在里面写元素.addEventListener('事件类型'，方法名） 即可。 最好就偷懒，用1 
 
+======================================= 
 
+setTimeout & setInterval 区别
+
+    1.简单理解版 ： https://www.jianshu.com/p/4ff86db97ff5
+    2.复杂版本： https://www.jianshu.com/p/fc9a08ca2c92
+    3.自己理解， setTimeout(函数，延迟事件)；    setInterval(函数，间隔时间)---- 相当于while，所以一定要有if条件去clearInterval
   
