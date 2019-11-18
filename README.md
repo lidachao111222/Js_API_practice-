@@ -78,4 +78,17 @@ setTimeout & setInterval 区别
     1.简单理解版 ： https://www.jianshu.com/p/4ff86db97ff5
     2.复杂版本： https://www.jianshu.com/p/fc9a08ca2c92
     3.自己理解， setTimeout(函数，延迟事件)；    setInterval(函数，间隔时间)---- 相当于while，所以一定要有if条件去clearInterval
-  
+    
+======================================= 
+常用事件： source: https://www.w3school.com.cn/jsref/dom_obj_event.asp   (全部)
+    
+    1.onblur	元素失去焦点。
+    2.onfocus	元素获得焦点。
+    3.onclick	当用户点击某个对象时调用的事件句柄。
+    4.onkeydown	某个键盘按键被按下。
+    5.onkeyup	某个键盘按键被松开。
+    6.onmousedown	鼠标按钮被按下。
+    7.onmousemove	鼠标被移动。
+    8.onmouseout	鼠标从某元素移开。
+    9.onmouseover	鼠标移到某元素之上。
+    10.onmouseup	鼠标按键被松开。
