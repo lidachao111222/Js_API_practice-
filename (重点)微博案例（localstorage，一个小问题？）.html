@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>微博发布效果</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .weibo {
+            width: 600px;
+            border: 1px solid #ccc;
+
+            margin: 100px auto;
+            padding: 10px;
+
+        }
+
+        .weibo-text {
+            width: 590px;
+            height: 140px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            outline: none;
+            resize: none;
+        }
+
+        .weibo-text:focus {
+            border-color: #f60;
+        }
+
+        .weibo-btn {
+            width: 80px;
+            height: 30px;
+            background-color: #f90;
+            color: #fff;
+            border: 0 none;
+            margin-top: 5px;
+            border-radius: 3px;
+            cursor: pointer;
+            outline: 0 none;
+        }
+
+        .weibo-list {
+            padding-top: 10px;
+        }
+
+        .weibo-list li {
+            font-size: 14px;
+            line-height: 30px;
+            border-bottom: 1px dotted #ccc;
+            overflow: hidden;
+        }
+
+        .weibo-list li p {
+            float: left;
+        }
+
+        .weibo-list li span {
+            float: right;
+            cursor: pointer;
+        }
+
+        .weibo-list li input {
+            height: 24px;
+            line-height: 24px;
+            width: 300px;
+            font-size: 14px;
+            border: 0 none;
+        }
+
+        .time {
+            margin-right: 10px;
+            font-style: normal;
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="weibo">
+        <textarea class="weibo-text"></textarea>
+        <input class="weibo-btn" value="发布" type="button">
+        <ul class="weibo-list">
+            <!-- <li>
+            <p class="content">快来收了这九款用上就停不下来的应用吧！！</p>
+            <span class="time"></span>
+            <span class="del">删除</span>
+        </li> -->
+        </ul>
+    </div>
+</body>
+<script src="./今日的时间.js"></script>
+
+
+<script>
+    // 需求分析:
+
+    // 点击发布发送 input里的信息
+    //发出的信息里包括 1: 信息   2:时间    3.删除按钮
+    //点击删除删除信息
+
+    //重点，信息存储在localstroage中，所以刷新还是存在的
+
+
+    //得到元素
+    let button = document.querySelector('.weibo-btn');
+
+    let message = document.querySelector('.weibo-text');
+
+    let ul = document.querySelector('.weibo-list');
+
+    //引用js包的js 时间函数
+
+
+
+    //注册事件
+
+    //添加信息
+    button.addEventListener('click', function () {
+        //得到的信息
+        let msg = message.value;
+
+        // 创建li元素
+        let newLi = document.createElement('li');
+        //给li元素加入信息
+        newLi.innerHTML = `<p class="content">${msg}</p>
+        <span class="del">删除</span>  
+            <span class="time">${getNow()}</span>  
+           `; //为啥要换位置？
+
+        //把创建的元素放入到ul中
+        ul.insertBefore(newLi, ul.children[0]);
+
+        //还原
+        message.value = '';
+    })
+
+
+
+    //del删除是动态生成的，所以需要事件委托(冒泡)
+    //del父级注册事件
+    ul.addEventListener('click', function (e) {
+        if (e.target.classList.contains('del')) {
+            ul.removeChild(e.target.parentNode);
+        }
+    })
+</script>
+
+</html>
