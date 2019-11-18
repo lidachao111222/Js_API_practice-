@@ -47,8 +47,9 @@ offset系列    (offset的偏移是相对父级来说的，那个父级有定位
     2. 获得鼠标位置  ex： e.pageX;
     3. 获得键盘按键   ex：（忘了，稍后补= = ）
     4. 阻止冒泡  ex：e.stopPropagation(); 父级是相同事件的话，就不会被执行。
-    5. 得到真正触发事件的是哪个元素 （通过冒泡得知）e.target / e.target.nodeName
+    5. 得到真正触发事件的是哪个元素 【事件委托】（通过冒泡得知）e.target / e.target.nodeName
     6. 阻止事件的默认行为 e.preventDefault();
 
-    
+    注意： 第五点用于 有些元素动态生成，所以不好得到，此时用事件委托，给元素的父级注册事件， 再通过e.target得到到底是哪个元素。（ex：微博的删除）
+   
     
