@@ -206,8 +206,8 @@
         }
     })
 
-
-    title.addEventListener('mouseup', function (e) {
+    //mouseup 给 document 而不是title   这样在title外面移出之后，鼠标抬起，click为false
+    document.addEventListener('mouseup', function (e) {
         click = false;
     })
 
