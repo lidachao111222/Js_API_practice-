@@ -57,7 +57,7 @@ Nov.18
 
 微博localstorage 体现的不足：
 
-    1.自定义属性  元素中 data-自己定义的属性名=       调用元素.style.dataset.自己定义的属性名  or e.target.dataset.id
+    1.自定义属性  元素中 data-自己定义的属性名=       调用元素.dataset.自己定义的属性名  or e.target.dataset.id
     2.如何删除localstorage的信息? 利用id  如果 其与点击的元素的自定义id相等，运用数组的索引（forEach方法得到索引）去删除 .splice（索引，删几个元素）。
     3.事件委托。
     4.设定id。循环，把arr中的元素id最大值赋给id，id再++
