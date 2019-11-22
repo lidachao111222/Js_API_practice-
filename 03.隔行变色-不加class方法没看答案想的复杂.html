@@ -55,7 +55,9 @@
         //注册事件,鼠标移入
         liSet.forEach(function (liEach) {
             liEach.addEventListener('mouseover', function () {
-                this.style.backgroundColor = 'yellow';
+                liEach.style.backgroundColor = 'yellow';
+                console.log(this);
+                console.log(liEach);
             })
         })
 
